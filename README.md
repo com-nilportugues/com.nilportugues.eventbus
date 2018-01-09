@@ -6,6 +6,29 @@ There are 3 classes that make up this EventBus
 - **EventPublisher**: Interface that allows implementations handling the store of the events in a queue.
 - **EventSubscriber**: This class registers event handlers to events. When a message is consumed, event handlers will be called.
 
-### Package dependencies
+### Installation
 
-None.
+Add in your `pom.xml` file the jitpack.io repositories:
+
+```xml
+<repositories>
+  <!-- ... -->
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+  <!-- ... -->
+</repositories>
+```
+  
+Now add the package as a dependency: 
+
+```xml
+<dependencies>		
+  <dependency>
+    <groupId>com.nilportugues</groupId>
+    <artifactId>eventbus</artifactId>
+    <version>${eventbus.version}</version>
+  </dependency>
+</dependencies>  
+```
