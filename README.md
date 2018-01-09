@@ -12,12 +12,10 @@ Add in your `pom.xml` file the jitpack.io repositories:
 
 ```xml
 <repositories>
-  <!-- ... -->
   <repository>
     <id>jitpack.io</id>
     <url>https://jitpack.io</url>
   </repository>
-  <!-- ... -->
 </repositories>
 ```
   
