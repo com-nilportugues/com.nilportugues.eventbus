@@ -1,4 +1,4 @@
-# EventBus Common Interfaces
+# EventBus 
 
 There are 3 classes that make up this EventBus 
 
