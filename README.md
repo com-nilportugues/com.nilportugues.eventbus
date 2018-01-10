@@ -1,10 +1,6 @@
 # EventBus 
 
-There are 3 classes that make up this EventBus 
-
-- **EventBus**: Given an event, it will dispatch it to a queue.
-- **EventPublisher**: Interface that allows implementations handling the store of the events in a queue.
-- **EventSubscriber**: This class registers event handlers to events. When a message is consumed, event handlers will be called.
+[![Build Status](https://travis-ci.org/com-nilportugues/com.nilportugues.eventbus.svg?branch=master)](https://travis-ci.org/com-nilportugues/com.nilportugues.eventbus)
 
 ## Installation
 
