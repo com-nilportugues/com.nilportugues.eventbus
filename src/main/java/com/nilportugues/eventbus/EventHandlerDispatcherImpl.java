@@ -36,9 +36,9 @@ public class EventHandlerDispatcherImpl implements EventHandlerDispatcher {
             final List<EventHandler> eventHandlers = (List<EventHandler>) optional.get();
 
             Flux.fromIterable(eventHandlers)
-                    .doOnNext(eventHandler -> eventHandler.handle(event))
-                    .publishOn(Schedulers.parallel())
-                    .subscribe(eventHandler -> LOG.debug(LOG_MSG, eventHandler.getClass().toString()));
+                .doOnNext(eventHandler -> eventHandler.handle(event))
+                .publishOn(Schedulers.parallel())
+                .subscribe(eventHandler -> LOG.debug(LOG_MSG, eventHandler.getClass().toString()));
 
         } catch (Exception t) {
             LOG.info(t.getMessage());
