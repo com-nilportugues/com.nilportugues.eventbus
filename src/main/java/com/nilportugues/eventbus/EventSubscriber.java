@@ -11,8 +11,8 @@ import java.util.concurrent.CompletableFuture;
 
 public class EventSubscriber {
 
-    private final Map<String, List<String>> events;
     private static final Logger log = LoggerFactory.getLogger(EventSubscriber.class);
+    private final Map<String, List<String>> events;
     private final BeanProvider provider;
     private final ClassResolverImpl resolver;
 
