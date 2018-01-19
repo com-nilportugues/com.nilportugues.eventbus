@@ -1,6 +1,6 @@
 # EventBus 
 
-[![Build Status](https://travis-ci.org/com-nilportugues/eventbus.svg?branch=master)](https://travis-ci.org/com-nilportugues/com.nilportugues.eventbus)
+[![Build Status](https://travis-ci.org/com-nilportugues/eventbus.svg?branch=master)](https://travis-ci.org/com-nilportugues/eventbus)
 
 - Provides definitions of the Event Bus interface.
 - Provides an EventPublisher implementation: LocalEventPublisher.
