@@ -2,13 +2,13 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.nilportugues</groupId>
     <artifactId>eventbus</artifactId>
     <version>1.0.0.RELEASE</version>
     <packaging>jar</packaging>
     <name>nilportugues/eventbus</name>
     <description>An Event Bus common interfaces</description>
+    <url>https://github.com/com-nilportugues/eventbus</url>
 
     <properties>
         <argLine>-Djava.security.egd=file:/dev/./urandom -Xmx512m</argLine>
@@ -65,7 +65,9 @@
 
     <build>
         <plugins>
-            <!-- COMPILE AS JAVA 8 -->
+            <!-- ***********************************************************
+             * COMPILE AS JAVA 8
+            ************************************************************ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -75,13 +77,17 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <!-- SONARQUBE -->
+            <!-- ***********************************************************
+             * SONARQUBE
+            ************************************************************ -->
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>3.4.0.905</version>
             </plugin>
-            <!-- CODE QUALITY: FORMATTER -->
+            <!-- ***********************************************************
+             * CODE QUALITY: FORMATTER
+            ************************************************************ -->
             <plugin>
                 <groupId>net.revelc.code.formatter</groupId>
                 <artifactId>formatter-maven-plugin</artifactId>
@@ -89,7 +95,9 @@
                     <configFile>formatter.xml</configFile>
                 </configuration>
             </plugin>
-            <!-- CODE QUALITY: ERROR PRONE -->
+            <!-- ***********************************************************
+             * CODE QUALITY: ERROR PRONE
+            ************************************************************ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -139,6 +147,99 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- ***********************************************************
+            * DEPLOY TO CENTRAL PLUGIN
+            ************************************************************ -->            
+            <plugin>
+                <groupId>org.sonatype.plugins</groupId>
+                <artifactId>nexus-staging-maven-plugin</artifactId>
+                <version>1.6.5</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <serverId>oss.sonatype.org</serverId>
+                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                    <description>${project.version}</description>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>deploy-to-sonatype</id>
+                        <phase>deploy</phase>
+                        <goals>
+                        <goal>deploy</goal>
+                        <goal>release</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>            
         </plugins>
     </build>
+    
+    <!-- ***********************************************************
+    * DEPLOY TO CENTRAL REQUIRED BLOCKS
+    ************************************************************ -->
+    
+    <profiles>
+        <profile>
+          <id>release-sign-artifacts</id>
+          <activation>
+            <property>
+              <name>performRelease</name>
+              <value>true</value>
+            </property>
+          </activation>
+          <build>
+            <plugins>
+              <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                  <execution>
+                    <id>sign-artifacts</id>
+                    <phase>verify</phase>
+                    <goals>
+                      <goal>sign</goal>
+                    </goals>
+                  </execution>
+                </executions>
+              </plugin>
+            </plugins>
+          </build>
+        </profile>
+    </profiles>
+
+    <distributionManagement>
+        <repository>
+            <id>oss.sonatype.org</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>oss.sonatype.org</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <licenses>
+        <license>
+        <name>MIT License</name>
+        <url>http://www.opensource.org/licenses/mit-license.php</url>
+        <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/com-nilportugues/eventbus</url>
+        <connection>scm:git:git@github.com:com-nilportugues/eventbus.git</connection>
+        <developerConnection>scm:git:git@github.com:com-nilportugues/eventbus.git</developerConnection>
+    </scm>
+
+    <developers>
+        <developer>
+          <email>contact@nilportugues.com</email>
+          <name>Nil Portugués Calderó</name>
+          <url>https://nilportugues.com</url>
+          <id>nilportugues</id>
+        </developer>
+    </developers>    
+    
 </project>
