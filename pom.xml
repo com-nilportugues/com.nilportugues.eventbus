@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.nilportugues</groupId>
     <artifactId>eventbus</artifactId>
-    <version>1.0.1.RELEASE</version>
+    <version>1.0.0.RELEASE</version>
     <packaging>jar</packaging>
     <name>nilportugues/eventbus</name>
     <description>An Event Bus common interfaces</description>
